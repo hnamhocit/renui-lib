@@ -25,6 +25,11 @@ npm install renui
 yarn install renui
 ```
 
-## Warning
+## Usage
 
--   Just **preview and unstable**, please _verify_ before **download or test**
+```
+import "renui/renui.css"
+import {Button} from "renui"
+
+<Button>Hello world</Button>
+```

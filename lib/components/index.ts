@@ -1,3 +1,5 @@
+import "../tailwind.css";
+
 export { default as Accordion } from "./Accordion";
 export { default as Avatar } from "./Avatar";
 export { default as Badge } from "./Badge";
