@@ -1,7 +1,7 @@
 {
 	"name": "renui",
 	"type": "module",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"files": [
 		"dist"
 	],
@@ -11,7 +11,8 @@
 	"exports": {
 		".": {
 			"import": "./dist/renui.js",
-			"require": "./dist/renui.umd.cjs"
+			"require": "./dist/renui.umd.cjs",
+			"types": "./dist/index.d.ts"
 		},
 		"./tailwind.css": "./dist/renui.css"
 	},
@@ -21,7 +22,8 @@
 		"lint": "eslint .",
 		"preview": "vite preview",
 		"storybook": "storybook dev -p 6006",
-		"build-storybook": "storybook build"
+		"build-storybook": "storybook build",
+		"pre:publish": "npm run build"
 	},
 	"dependencies": {
 		"@tailwindcss/vite": "^4.0.12",
