@@ -28,7 +28,7 @@ yarn install renui
 ## Usage
 
 ```
-import "renui/renui.css"
+import "renui/style.css"
 import {Button} from "renui"
 
 <Button>Hello world</Button>

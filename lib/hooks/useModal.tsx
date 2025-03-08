@@ -1,10 +1,12 @@
-import { useState } from 'react'
+"use client";
+
+import { useState } from "react";
 
 export const useModal = () => {
-	const [isOpen, setIsOpen] = useState(false)
+	const [isOpen, setIsOpen] = useState(false);
 
-	const onOpen = () => setIsOpen(true)
-	const onOpenChange = () => setIsOpen((prev) => !prev)
+	const onOpen = () => setIsOpen(true);
+	const onOpenChange = () => setIsOpen((prev) => !prev);
 
-	return { isOpen, onOpen, onOpenChange }
-}
+	return { isOpen, onOpen, onOpenChange };
+};

@@ -14,7 +14,7 @@
 			"require": "./dist/renui.umd.cjs",
 			"types": "./dist/index.d.ts"
 		},
-		"./tailwind.css": "./dist/renui.css"
+		"./style.css": "./dist/renui.css"
 	},
 	"scripts": {
 		"dev": "vite",
