@@ -24,9 +24,16 @@ interface InputProps
 	label?: string;
 	isError?: boolean;
 	errorMessage?: string;
-	rounded?: boolean;
+	isRounded?: boolean;
 	startIcon?: ReactNode;
 	endIcon?: ReactNode;
+	classNames?: InputClassNames;
+}
+
+interface InputClassNames {
+	input?: string;
+	label?: string;
+	container?: string;
 }
 
 const Input: FC<InputProps> = ({
@@ -35,10 +42,11 @@ const Input: FC<InputProps> = ({
 	color = "default",
 	label,
 	isError,
-	rounded,
+	isRounded,
 	errorMessage,
 	startIcon,
 	endIcon,
+	classNames,
 	...props
 }) => {
 	const [isVisible, setIsVisible] = useState(false);
@@ -52,7 +60,7 @@ const Input: FC<InputProps> = ({
 		variants: {
 			solid: "",
 			bordered: "!bg-transparent border-2",
-			underlined: "!bg-transparent border-b-2 rounded-none",
+			underlined: "!bg-transparent border-b-2 !rounded-none",
 			light: "!bg-transparent",
 		},
 		sizes: {
@@ -71,11 +79,12 @@ const Input: FC<InputProps> = ({
 	};
 
 	return (
-		<div>
+		<div className={classNames?.container}>
 			<label
 				htmlFor={id}
 				className={clsx(
 					"text-sm text-gray-700 font-medium",
+					classNames?.label,
 					isError && "!text-red-600"
 				)}
 			>
@@ -85,10 +94,11 @@ const Input: FC<InputProps> = ({
 			<div
 				className={clsx(
 					"flex items-center gap-3 my-2 rounded-md transition-all",
+					props.className,
 					variants.variants[variant],
 					variants.sizes[size],
 					variants.colors[color],
-					rounded && "!rounded-full",
+					isRounded && "!rounded-full",
 					isError && "!bg-red-600 !text-white",
 					isFocus && "ring-2"
 				)}
@@ -98,7 +108,10 @@ const Input: FC<InputProps> = ({
 				<input
 					{...props}
 					type={isVisible ? "text" : props.type}
-					className="flex-1 block outline-none w-full bg-transparent"
+					className={clsx(
+						"flex-1 block outline-none w-full bg-transparent",
+						classNames?.input
+					)}
 					onFocus={toggleIsFocus}
 					onBlur={toggleIsFocus}
 				/>

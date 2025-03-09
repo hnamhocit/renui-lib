@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { FC, memo } from "react";
 
 import Avatar from "../Avatar";
@@ -9,6 +10,14 @@ interface UserProps {
 	name: string | undefined;
 	description: string | undefined;
 	isLinkDescription?: boolean;
+	classNames?: UserClassNames;
+}
+
+interface UserClassNames {
+	avatar?: string;
+	name?: string;
+	description?: string;
+	container?: string;
 }
 
 const User: FC<UserProps> = ({
@@ -16,30 +25,45 @@ const User: FC<UserProps> = ({
 	name,
 	description,
 	isLinkDescription,
+	classNames,
 }) => {
 	return (
-		<div className="flex items-center gap-3">
+		<div className={clsx("flex items-center gap-3", classNames?.container)}>
 			<Avatar
 				src={photoURL}
 				alt={name}
 				isRounded
 				isZoom
-				className="shrink-0"
+				className={clsx("shrink-0", classNames?.avatar)}
 			/>
 
 			<div className="flex-1">
-				<div className="text-sm font-semibold">{name}</div>
+				<div
+					className={clsx("text-sm font-semibold", classNames?.name)}
+				>
+					{name}
+				</div>
 
 				{isLinkDescription ? (
 					<a
 						href={description}
 						target="_blank"
-						className="text-xs text-blue-600 underline"
+						className={clsx(
+							"text-xs text-blue-600 underline",
+							classNames?.description
+						)}
 					>
 						{description}
 					</a>
 				) : (
-					<div className="text-xs text-gray-700">{description}</div>
+					<div
+						className={clsx(
+							"text-xs text-gray-700",
+							classNames?.description
+						)}
+					>
+						{description}
+					</div>
 				)}
 			</div>
 		</div>

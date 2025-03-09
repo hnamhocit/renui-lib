@@ -12,6 +12,12 @@ interface TextareaProps {
 	isError?: boolean;
 	label?: string;
 	errorMessage?: string;
+	classNames: TextareaClassNames;
+}
+
+interface TextareaClassNames {
+	container?: string;
+	label?: string;
 }
 
 const Textarea: FC<TextareaProps> = ({
@@ -23,6 +29,7 @@ const Textarea: FC<TextareaProps> = ({
 	isError,
 	label,
 	errorMessage,
+	classNames,
 }) => {
 	const textbox = useRef<HTMLTextAreaElement>(null);
 
@@ -43,11 +50,12 @@ const Textarea: FC<TextareaProps> = ({
 	const id = useId();
 
 	return (
-		<div className="space-y-2">
+		<div className={clsx("space-y-2", classNames.container)}>
 			<label
 				htmlFor={id}
 				className={clsx(
 					"text-sm text-gray-700 font-medium",
+					classNames.label,
 					isError && "!text-red-600"
 				)}
 			>

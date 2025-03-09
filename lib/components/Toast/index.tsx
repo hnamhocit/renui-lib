@@ -9,6 +9,32 @@ import { IoWarning } from "react-icons/io5";
 import { IToast, ToastContext } from "../../context/ToastContext";
 import Button from "../Button";
 
+const variants = {
+	sizes: {
+		sm: "p-2 max-w-60",
+		md: "py-2 px-4 max-w-80",
+		lg: "py-4 px-5 max-w-[400px]",
+	},
+	positions: {
+		"top-right": "top-4 right-4",
+		"top-left": "top-4 left-4",
+		"bottom-right": "bottom-4 right-4",
+		"bottom-left": "bottom-4 left-4",
+		"top-center": "top-4 left-1/2 -translate-x-1/2",
+		"right-center": "top-1/2 right-4 -translate-y-1/2",
+		"bottom-center": "bottom-4 left-1/2 -translate-x-1/2",
+		"left-center": "top-1/2 left-4 -translate-y-1/2",
+	},
+	colors: {
+		default: "border-gray-950 bg-gray-900",
+		primary: "border-blue-700 bg-blue-600",
+		secondary: "border-indigo-700 bg-indigo-600",
+		success: "border-green-700 bg-green-600",
+		warning: "border-amber-700 bg-amber-600",
+		danger: "border-red-700 bg-red-600",
+	},
+};
+
 const Toast: FC<IToast> = ({
 	id,
 	color = "default",
@@ -16,38 +42,12 @@ const Toast: FC<IToast> = ({
 	size = "md",
 	position = "top-right",
 	className,
-	rounded,
+	isRounded,
 	type,
 }) => {
 	const timerRef = useRef<NodeJS.Timeout | null>(null);
 	const [isShow, setIsShow] = useState(true);
 	const { removeToast } = useContext(ToastContext);
-
-	const variants = {
-		sizes: {
-			sm: "p-2 max-w-60",
-			md: "py-2 px-4 max-w-80",
-			lg: "py-4 px-5 max-w-[400px]",
-		},
-		positions: {
-			"top-right": "top-4 right-4",
-			"top-left": "top-4 left-4",
-			"bottom-right": "bottom-4 right-4",
-			"bottom-left": "bottom-4 left-4",
-			"top-center": "top-4 left-1/2 -translate-x-1/2",
-			"right-center": "top-1/2 right-4 -translate-y-1/2",
-			"bottom-center": "bottom-4 left-1/2 -translate-x-1/2",
-			"left-center": "top-1/2 left-4 -translate-y-1/2",
-		},
-		colors: {
-			default: "border-gray-950 bg-gray-900",
-			primary: "border-blue-700 bg-blue-600",
-			secondary: "border-indigo-700 bg-indigo-600",
-			success: "border-green-700 bg-green-600",
-			warning: "border-amber-700 bg-amber-600",
-			danger: "border-red-700 bg-red-600",
-		},
-	};
 
 	useEffect(() => {
 		timerRef.current = setTimeout(() => {
@@ -82,7 +82,7 @@ const Toast: FC<IToast> = ({
 							: type === "warning"
 							? variants.colors.warning
 							: type === "danger" && variants.colors.danger,
-						rounded && "!rounded-full",
+						isRounded && "!rounded-full",
 						className
 					)}
 				>

@@ -13,6 +13,7 @@ export { default as Image } from "./Image";
 export { default as ImageStack } from "./ImageStack";
 export * from "./Input";
 export { default as Input } from "./Input";
+export { default as Link } from "./Link";
 export { default as Modal } from "./Modal";
 export { default as ModalBody } from "./Modal/ModalBody";
 export { default as ModalHeader } from "./Modal/ModalHeader";

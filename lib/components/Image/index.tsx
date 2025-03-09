@@ -9,9 +9,21 @@ interface ImageProps {
 	className?: string;
 	isZoom?: boolean;
 	isRounded?: boolean;
+	classNames?: ImageClassNames;
 }
 
-const Image: FC<ImageProps> = ({ src, alt, className, isZoom, isRounded }) => {
+interface ImageClassNames {
+	container?: string;
+}
+
+const Image: FC<ImageProps> = ({
+	src,
+	alt,
+	className,
+	isZoom,
+	isRounded,
+	classNames,
+}) => {
 	const [isHover, setIsHover] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 	const imgRef = useRef<HTMLImageElement | null>(null);
@@ -23,6 +35,7 @@ const Image: FC<ImageProps> = ({ src, alt, className, isZoom, isRounded }) => {
 		<div
 			className={clsx(
 				"relative overflow-hidden w-fit rounded-md",
+				classNames?.container,
 				isRounded && "!rounded-full"
 			)}
 		>

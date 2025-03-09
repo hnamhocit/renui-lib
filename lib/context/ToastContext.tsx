@@ -20,7 +20,7 @@ export interface IToast {
 	position?: Position;
 	size?: Size;
 	className?: string;
-	rounded?: boolean;
+	isRounded?: boolean;
 	type?: ToastType;
 }
 

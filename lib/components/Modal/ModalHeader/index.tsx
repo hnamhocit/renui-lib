@@ -1,15 +1,21 @@
-'use client'
+"use client";
 
-import { FC, ReactNode } from 'react'
+import clsx from "clsx";
+import { FC, ReactNode } from "react";
 
 interface ModalHeaderProps {
-	children: ReactNode
+	children: ReactNode;
+	className?: string;
 }
 
-const ModalHeader: FC<ModalHeaderProps> = ({ children }) => {
+const ModalHeader: FC<ModalHeaderProps> = ({ children, className }) => {
 	return (
-		<div className='p-4 font-semibold text-xl border-b-2'>{children}</div>
-	)
-}
+		<div
+			className={clsx("p-4 font-semibold text-xl border-b-2", className)}
+		>
+			{children}
+		</div>
+	);
+};
 
-export default ModalHeader
+export default ModalHeader;
