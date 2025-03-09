@@ -29,7 +29,8 @@ const meta: Meta<typeof User> = {
 		},
 	},
 	args: {
-		photoURL: "https://via.placeholder.com/50",
+		photoURL:
+			"https://pbs.twimg.com/media/GlhXYSVa4AAejfk?format=jpg&name=medium",
 		name: "John Doe",
 		description: "Software Engineer",
 		isLinkDescription: false,
@@ -47,7 +48,8 @@ type Story = StoryObj<typeof User>;
 // Default Variant
 export const Default: Story = {
 	args: {
-		photoURL: "https://via.placeholder.com/50",
+		photoURL:
+			"https://pbs.twimg.com/media/GlhXYSVa4AAejfk?format=jpg&name=medium",
 		name: "Jane Smith",
 		description: "Product Designer",
 	},
@@ -56,7 +58,8 @@ export const Default: Story = {
 // With Link Description
 export const WithLinkDescription: Story = {
 	args: {
-		photoURL: "https://via.placeholder.com/50",
+		photoURL:
+			"https://pbs.twimg.com/media/GlhXYSVa4AAejfk?format=jpg&name=medium",
 		name: "Alice Johnson",
 		description: "https://example.com",
 		isLinkDescription: true,
@@ -66,7 +69,8 @@ export const WithLinkDescription: Story = {
 // Without Description
 export const WithoutDescription: Story = {
 	args: {
-		photoURL: "https://via.placeholder.com/50",
+		photoURL:
+			"https://pbs.twimg.com/media/GlhXYSVa4AAejfk?format=jpg&name=medium",
 		name: "Bob Brown",
 		description: undefined,
 	},
@@ -87,7 +91,8 @@ export const CustomAvatarSize: Story = {
 // Rounded Avatar with Zoom
 export const RoundedAvatarWithZoom: Story = {
 	args: {
-		photoURL: "https://via.placeholder.com/50",
+		photoURL:
+			"https://pbs.twimg.com/media/GlhXYSVa4AAejfk?format=jpg&name=medium",
 		name: "Rounded Avatar",
 		description: "This avatar is rounded and zoomable.",
 		classNames: {
@@ -99,7 +104,8 @@ export const RoundedAvatarWithZoom: Story = {
 // Combined Variant
 export const Combined: Story = {
 	args: {
-		photoURL: "https://via.placeholder.com/50",
+		photoURL:
+			"https://pbs.twimg.com/media/GlhXYSVa4AAejfk?format=jpg&name=medium",
 		name: "Combined Example",
 		description: "https://example.com",
 		isLinkDescription: true,

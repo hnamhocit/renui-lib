@@ -27,6 +27,17 @@ const Image: FC<ImageProps> = ({
 	placeholder,
 }) => {
 	const [isLoading, setIsLoading] = useState(true);
+	const [hasError, setHasError] = useState(false);
+
+	const handleLoad = () => {
+		setIsLoading(false);
+		setHasError(false);
+	};
+
+	const handleError = () => {
+		setIsLoading(false);
+		setHasError(true);
+	};
 
 	return (
 		<div
@@ -36,18 +47,35 @@ const Image: FC<ImageProps> = ({
 				isRounded && "!rounded-full"
 			)}
 		>
-			{/* Optimized placeholder */}
-			{isLoading && (
+			{/* Error state */}
+			{hasError && (
+				<div className="absolute inset-0 flex items-center justify-center bg-red-100 text-red-500">
+					Error loading image
+				</div>
+			)}
+
+			{/* Loading placeholder */}
+			{isLoading && !hasError && (
 				<div
-					className="absolute inset-0 bg-gray-200 bg-cover bg-center blur-sm"
+					className={clsx(
+						"absolute inset-0 bg-gray-200 animate-pulse",
+						placeholder
+							? "bg-cover bg-center blur-sm"
+							: "flex items-center justify-center"
+					)}
 					style={{
 						backgroundImage: placeholder
 							? `url(${placeholder})`
 							: undefined,
 					}}
-				/>
+				>
+					{!placeholder && (
+						<span className="text-gray-400">Loading...</span>
+					)}
+				</div>
 			)}
 
+			{/* Actual image */}
 			<img
 				src={src}
 				alt={alt}
@@ -56,12 +84,13 @@ const Image: FC<ImageProps> = ({
 					isRounded && "!rounded-full",
 					className,
 					isZoom && "hover:scale-130 cursor-pointer",
-					isLoading && "opacity-0"
+					(isLoading || hasError) && "opacity-0"
 				)}
-				onLoad={() => setIsLoading(false)}
+				onLoad={handleLoad}
+				onError={handleError}
 				loading="lazy"
 				style={{
-					visibility: isLoading ? "hidden" : "visible",
+					visibility: isLoading || hasError ? "hidden" : "visible",
 				}}
 			/>
 		</div>

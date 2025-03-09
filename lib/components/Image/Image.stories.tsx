@@ -76,25 +76,27 @@ export const Rounded: Story = {
 // Combined Variant
 export const Combined: Story = {
 	args: {
-		src: "https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+		src: "https://mui.com/static/branding/companies/netflix.svg",
 		alt: "Combined Image",
 		isZoom: true,
 		isRounded: true,
 	},
 };
 
-// Loading State
-export const Loading: Story = {
-	render: (args) => {
-		return (
-			<div>
-				<p className="mb-2">Simulating a loading state:</p>
-				<Image {...args} />
-			</div>
-		);
-	},
+// Loading state story
+export const LoadingState: Story = {
 	args: {
-		src: undefined, // Simulate no image source to trigger loading state
+		src: undefined, // Simulate no image source
 		alt: "Loading Image",
+		placeholder:
+			"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhESMIAAAAABJRU5ErkJggg==", // Base64 placeholder
+	},
+};
+
+// Error state story
+export const ErrorState: Story = {
+	args: {
+		src: "https://invalid.url/image.jpg", // Non-existent image URL
+		alt: "Broken Image",
 	},
 };
