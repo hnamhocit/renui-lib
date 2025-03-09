@@ -12,7 +12,7 @@ interface TextareaProps {
 	isError?: boolean;
 	label?: string;
 	errorMessage?: string;
-	classNames: TextareaClassNames;
+	classNames?: TextareaClassNames;
 }
 
 interface TextareaClassNames {
@@ -50,12 +50,12 @@ const Textarea: FC<TextareaProps> = ({
 	const id = useId();
 
 	return (
-		<div className={clsx("space-y-2", classNames.container)}>
+		<div className={clsx("space-y-2", classNames?.container)}>
 			<label
 				htmlFor={id}
 				className={clsx(
 					"text-sm text-gray-700 font-medium",
-					classNames.label,
+					classNames?.label,
 					isError && "!text-red-600"
 				)}
 			>

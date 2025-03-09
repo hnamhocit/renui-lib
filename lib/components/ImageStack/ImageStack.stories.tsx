@@ -24,12 +24,12 @@ const meta: Meta<typeof ImageStack> = {
 	},
 	args: {
 		images: [
-			"https://via.placeholder.com/50",
-			"https://via.placeholder.com/60",
-			"https://via.placeholder.com/70",
-			"https://via.placeholder.com/80",
-			"https://via.placeholder.com/90",
-			"https://via.placeholder.com/100",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
 		],
 		maxImages: 5,
 		className: "",
@@ -48,9 +48,9 @@ type Story = StoryObj<typeof ImageStack>;
 export const Default: Story = {
 	args: {
 		images: [
-			"https://via.placeholder.com/50",
-			"https://via.placeholder.com/60",
-			"https://via.placeholder.com/70",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
 		],
 		maxImages: 3,
 	},
@@ -60,12 +60,12 @@ export const Default: Story = {
 export const WithMoreImages: Story = {
 	args: {
 		images: [
-			"https://via.placeholder.com/50",
-			"https://via.placeholder.com/60",
-			"https://via.placeholder.com/70",
-			"https://via.placeholder.com/80",
-			"https://via.placeholder.com/90",
-			"https://via.placeholder.com/100",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
 		],
 		maxImages: 4,
 	},
@@ -75,11 +75,11 @@ export const WithMoreImages: Story = {
 export const CustomMaxImages: Story = {
 	args: {
 		images: [
-			"https://via.placeholder.com/50",
-			"https://via.placeholder.com/60",
-			"https://via.placeholder.com/70",
-			"https://via.placeholder.com/80",
-			"https://via.placeholder.com/90",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
 		],
 		maxImages: 2,
 	},
@@ -97,12 +97,12 @@ export const NoImages: Story = {
 export const Combined: Story = {
 	args: {
 		images: [
-			"https://via.placeholder.com/50",
-			"https://via.placeholder.com/60",
-			"https://via.placeholder.com/70",
-			"https://via.placeholder.com/80",
-			"https://via.placeholder.com/90",
-			"https://via.placeholder.com/100",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
+			"https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
 		],
 		maxImages: 5,
 		classNames: {

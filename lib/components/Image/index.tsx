@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { FC, memo, useRef, useState } from "react";
+import { FC, memo, useState } from "react";
 
 interface ImageProps {
 	src: string | undefined;
@@ -10,6 +10,7 @@ interface ImageProps {
 	isZoom?: boolean;
 	isRounded?: boolean;
 	classNames?: ImageClassNames;
+	placeholder?: string; // Optional base64 placeholder
 }
 
 interface ImageClassNames {
@@ -23,13 +24,9 @@ const Image: FC<ImageProps> = ({
 	isZoom,
 	isRounded,
 	classNames,
+	placeholder,
 }) => {
-	const [isHover, setIsHover] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
-	const imgRef = useRef<HTMLImageElement | null>(null);
-
-	const handleImageLoad = () => setIsLoading(false);
-	const toggleIsHover = () => setIsHover((prev) => !prev);
 
 	return (
 		<div
@@ -39,23 +36,33 @@ const Image: FC<ImageProps> = ({
 				isRounded && "!rounded-full"
 			)}
 		>
+			{/* Optimized placeholder */}
 			{isLoading && (
-				<div className="animate-pulse w-40 h-24 bg-gray-300"></div>
+				<div
+					className="absolute inset-0 bg-gray-200 bg-cover bg-center blur-sm"
+					style={{
+						backgroundImage: placeholder
+							? `url(${placeholder})`
+							: undefined,
+					}}
+				/>
 			)}
 
 			<img
-				ref={imgRef}
 				src={src}
 				alt={alt}
 				className={clsx(
 					"w-full h-full rounded-md object-cover duration-300 transition-all",
 					isRounded && "!rounded-full",
 					className,
-					isHover && isZoom && "scale-130 cursor-pointer"
+					isZoom && "hover:scale-130 cursor-pointer",
+					isLoading && "opacity-0"
 				)}
-				onMouseEnter={toggleIsHover}
-				onMouseLeave={toggleIsHover}
-				onLoad={handleImageLoad}
+				onLoad={() => setIsLoading(false)}
+				loading="lazy"
+				style={{
+					visibility: isLoading ? "hidden" : "visible",
+				}}
 			/>
 		</div>
 	);

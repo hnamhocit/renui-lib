@@ -31,7 +31,7 @@ const meta: Meta<typeof Image> = {
 		},
 	},
 	args: {
-		src: "https://via.placeholder.com/150",
+		src: "https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
 		alt: "Example Image",
 		className: "",
 		isZoom: false,
@@ -50,7 +50,7 @@ type Story = StoryObj<typeof Image>;
 // Default variant
 export const Default: Story = {
 	args: {
-		src: "https://via.placeholder.com/150",
+		src: "https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
 		alt: "Default Image",
 	},
 };
@@ -58,7 +58,7 @@ export const Default: Story = {
 // Zoom Effect
 export const WithZoom: Story = {
 	args: {
-		src: "https://via.placeholder.com/150",
+		src: "https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
 		alt: "Zoomable Image",
 		isZoom: true,
 	},
@@ -67,7 +67,7 @@ export const WithZoom: Story = {
 // Rounded Image
 export const Rounded: Story = {
 	args: {
-		src: "https://via.placeholder.com/150",
+		src: "https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
 		alt: "Rounded Image",
 		isRounded: true,
 	},
@@ -76,7 +76,7 @@ export const Rounded: Story = {
 // Combined Variant
 export const Combined: Story = {
 	args: {
-		src: "https://via.placeholder.com/150",
+		src: "https://pbs.twimg.com/media/GlfP3EhbwAIqlbX?format=jpg&name=medium",
 		alt: "Combined Image",
 		isZoom: true,
 		isRounded: true,

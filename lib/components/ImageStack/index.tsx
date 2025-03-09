@@ -6,7 +6,7 @@ import { FC, memo } from "react";
 import { Avatar } from "../../main";
 
 interface ImageStackProps {
-	images: string[] | undefined;
+	images?: string[];
 	maxImages?: number;
 	className?: string;
 	classNames?: ImageStackClassNames;
@@ -18,45 +18,62 @@ interface ImageStackClassNames {
 }
 
 const ImageStack: FC<ImageStackProps> = ({
-	images,
+	images = [],
 	maxImages = 5,
 	className,
 	classNames,
 }) => {
-	const displayedImages = images?.slice(0, maxImages) || [];
+	const visibleCount = Math.min(images.length, maxImages);
+	const hasMore = images.length > maxImages;
+
+	// Calculate container width based on visible avatars
+	const containerWidth = visibleCount * 24 + 40; // 40px base + 24px per additional avatar
 
 	return (
-		<div className="space-y-2">
-			<div className={clsx("relative min-h-12", classNames?.container)}>
-				{displayedImages.map((image, index) => (
+		<div className={clsx("relative flex items-center", className)}>
+			{/* Avatar stack container */}
+			<div
+				className={clsx(
+					"relative flex items-center",
+					classNames?.container
+				)}
+				style={{ width: containerWidth }}
+			>
+				{images.slice(0, maxImages).map((src, index) => (
 					<div
 						key={index}
-						className="absolute top-0"
+						className="absolute transition-transform"
 						style={{
-							zIndex: displayedImages.length - index,
-							left: index * 24, // Offset each image by 8px
+							transform: `translateX(${index * 24}px)`,
+							zIndex: maxImages - index,
 						}}
 					>
 						<Avatar
-							src={image}
+							src={src}
 							alt={`avatar-${index}`}
 							isRounded
 							isBordered
-							className={className}
 							isZoom
+							className={clsx(
+								"w-10 h-10 border-2 border-white",
+								index > 0 && "ring-2 ring-white"
+							)}
 						/>
 					</div>
 				))}
 			</div>
 
-			<div
-				className={clsx(
-					"text-sm text-gray-500 shrink-0",
-					classNames?.text
-				)}
-			>
-				+{(images?.length ?? 0) - maxImages} more ...
-			</div>
+			{/* More count indicator */}
+			{hasMore && (
+				<div
+					className={clsx(
+						"ml-2 text-sm text-gray-500",
+						classNames?.text
+					)}
+				>
+					+{images.length - maxImages}
+				</div>
+			)}
 		</div>
 	);
 };
