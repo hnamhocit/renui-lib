@@ -32,6 +32,8 @@ yarn install renui
 ## Usage 💻
 
 ```
+// "use client" if you are using nextjs
+
 import "renui/style.css"
 import {Button} from "renui"
 
