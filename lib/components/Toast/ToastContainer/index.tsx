@@ -1,24 +1,21 @@
-'use client'
-import { useContext } from 'react'
-import { createPortal } from 'react-dom'
+"use client";
+import { useContext } from "react";
+import { createPortal } from "react-dom";
 
-import Toast from '../'
-import { ToastContext } from '../../../context/ToastContext'
+import Toast from "../";
+import { ToastContext } from "../../../context/ToastContext";
 
 const ToastContainer = () => {
-	const { toasts } = useContext(ToastContext)
+	const { toasts } = useContext(ToastContext);
 
 	return createPortal(
 		<>
 			{toasts.map((toast, index) => (
-				<Toast
-					key={index}
-					{...toast}
-				/>
+				<Toast key={index} {...toast} />
 			))}
 		</>,
-		document.getElementById('root') as Element,
-	)
-}
+		document.querySelector("body") as Element
+	);
+};
 
-export default ToastContainer
+export default ToastContainer;
