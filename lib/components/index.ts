@@ -20,6 +20,8 @@ export { default as ModalHeader } from "./Modal/ModalHeader";
 export { default as Radio } from "./Radio";
 export { default as SkeletonLoading } from "./SkeletonLoading";
 export { default as Spinner } from "./Spinner";
+export { default as Switch } from "./Switch";
+export { default as Tabs } from "./Tabs";
 export { default as Textarea } from "./Textarea";
 export { default as Toast } from "./Toast";
 export { default as ToastContainer } from "./Toast/ToastContainer";
