@@ -67,7 +67,7 @@ const variantStyles: Record<ButtonVariant, Record<Color, string>> = {
 	},
 	flat: {
 		default: "bg-gray-600 text-white hover:bg-gray-700",
-		primary: "bg-blue-400 text-white hover:bg-blue-500",
+		primary: "text-white hover:bg-blue-500",
 		secondary: "bg-indigo-400 text-white hover:bg-indigo-500",
 		success: "bg-green-400 text-white hover:bg-green-500",
 		warning: "bg-amber-400 text-white hover:bg-amber-500",
@@ -120,7 +120,7 @@ const Button: FC<ButtonProps> = ({
 			disabled={props.disabled}
 			{...props}
 		>
-			{isLoading && <Spinner $color="#FFF" />}
+			{isLoading && <Spinner $color="#FFF" $width={16} $height={16} />}
 			{!isLoading && (children as ReactNode)}
 		</motion.button>
 	);
