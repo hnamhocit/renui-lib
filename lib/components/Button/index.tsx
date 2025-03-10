@@ -45,12 +45,12 @@ const variantStyles: Record<ButtonVariant, Record<Color, string>> = {
 		danger: "bg-red-600 text-white hover:bg-red-700",
 	},
 	light: {
-		default: "bg-gray-100 text-gray-900 hover:bg-gray-200",
+		default: "text-gray-900 hover:bg-gray-200",
 		primary: "bg-blue-50 text-blue-600 hover:bg-blue-100",
-		secondary: "bg-indigo-50 text-indigo-600 hover:bg-indigo-100",
-		success: "bg-green-50 text-green-600 hover:bg-green-100",
-		warning: "bg-amber-50 text-amber-600 hover:bg-amber-100",
-		danger: "bg-red-50 text-red-600 hover:bg-red-100",
+		secondary: "text-indigo-600 hover:bg-indigo-100",
+		success: "text-green-600 hover:bg-green-100",
+		warning: "text-amber-600 hover:bg-amber-100",
+		danger: "text-red-600 hover:bg-red-100",
 	},
 	border: {
 		default:
@@ -93,10 +93,10 @@ const Button: FC<ButtonProps> = ({
 			baseStyles,
 			isIconOnly ? iconSizeStyles[size] : sizeStyles[size],
 			variantStyles[variant][color],
-			(isRounded || isIconOnly) && "rounded-full",
+			(isRounded || isIconOnly) && "!rounded-full",
 			isFullWidth && "w-full",
 			isShadow && "shadow-md",
-			isLoading && "pointer-events-none opacity-70",
+			(isLoading || props.disabled) && "pointer-events-none opacity-70",
 			className
 		);
 	}, [
@@ -109,6 +109,7 @@ const Button: FC<ButtonProps> = ({
 		isIconOnly,
 		isLoading,
 		className,
+		props.disabled,
 	]);
 
 	return (
@@ -116,10 +117,10 @@ const Button: FC<ButtonProps> = ({
 			whileHover={{ scale: 1.05 }}
 			whileTap={{ scale: 0.95, opacity: 0.9 }}
 			className={computedStyles}
-			disabled={isLoading || props.disabled}
+			disabled={props.disabled}
 			{...props}
 		>
-			{isLoading && <Spinner />}
+			{isLoading && <Spinner $color="#FFF" />}
 			{!isLoading && (children as ReactNode)}
 		</motion.button>
 	);
