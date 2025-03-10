@@ -1,8 +1,8 @@
 "use client";
 
 import clsx from "clsx";
-import { HTMLMotionProps, motion } from "motion/react";
-import { FC, memo, useMemo } from "react";
+import { HTMLMotionProps, motion } from "framer-motion";
+import { FC, memo, ReactNode, useMemo } from "react";
 
 import { Color, Size } from "../../types";
 import Spinner from "../Spinner";
@@ -20,37 +20,58 @@ interface ButtonProps extends Omit<HTMLMotionProps<"button">, "ref"> {
 	variant?: ButtonVariant;
 }
 
-const variants = {
-	colors: {
-		default:
-			"bg-gray-900 shadow-gray-900/50 hover:bg-gray-950 hover:border-gray-900 hover:text-gray-900",
-		primary:
-			"bg-blue-600 shadow-blue-600/50 hover:bg-blue-700 hover:border-blue-600 hover:text-blue-600 text-blue-600",
-		secondary:
-			"bg-indigo-600 shadow-indigo-600/50 hover:bg-indigo-700 hover:border-indigo-600 hover:text-indigo-600 text-indigo-600",
-		success:
-			"bg-green-600 shadow-green-600/50 hover:bg-green-700 hover:border-green-600 hover:text-green-600 text-green-600",
-		warning:
-			"bg-amber-600 shadow-amber-600/50 hover:bg-amber-700 hover:border-amber-600 hover:text-amber-600 text-amber-600",
-		danger: "bg-red-600 shadow-red-600/50 hover:bg-red-700 hover:border-red-600 hover:text-red-600 text-red-600",
+const baseStyles =
+	"flex items-center justify-center rounded-md gap-3 font-medium";
+
+const sizeStyles: Record<Size, string> = {
+	lg: "text-lg py-3 px-6",
+	md: "py-2 px-4",
+	sm: "text-sm py-1 px-2",
+};
+
+const iconSizeStyles: Record<Size, string> = {
+	lg: "p-3",
+	md: "p-2",
+	sm: "p-1",
+};
+
+const variantStyles: Record<ButtonVariant, Record<Color, string>> = {
+	solid: {
+		default: "bg-gray-900 text-white hover:bg-gray-950",
+		primary: "bg-blue-600 text-white hover:bg-blue-700",
+		secondary: "bg-indigo-600 text-white hover:bg-indigo-700",
+		success: "bg-green-600 text-white hover:bg-green-700",
+		warning: "bg-amber-600 text-white hover:bg-amber-700",
+		danger: "bg-red-600 text-white hover:bg-red-700",
 	},
-	variants: {
-		solid: "!text-white",
-		light: "!bg-transparent",
-		border: "bg-transparent border-2 hover:!text-white",
-		flat: {
-			default:
-				"!text-white !bg-gray-600 !shadow-gray-600/50 hover:!bg-gray-700",
-			primary:
-				"!text-white !bg-blue-400 !shadow-blue-400/50 hover:!bg-blue-500",
-			secondary:
-				"!text-white !bg-indigo-400 !shadow-indigo-400/50 hover:!bg-indigo-500",
-			success:
-				"!text-white !bg-green-400 !shadow-green-400/50 hover:!bg-green-500",
-			warning:
-				"!text-white !bg-amber-400 !shadow-amber-400/50 hover:!bg-amber-500",
-			danger: "!text-white !bg-red-400 !shadow-red-400/50 hover:!bg-red-500",
-		},
+	light: {
+		default: "bg-gray-100 text-gray-900 hover:bg-gray-200",
+		primary: "bg-blue-50 text-blue-600 hover:bg-blue-100",
+		secondary: "bg-indigo-50 text-indigo-600 hover:bg-indigo-100",
+		success: "bg-green-50 text-green-600 hover:bg-green-100",
+		warning: "bg-amber-50 text-amber-600 hover:bg-amber-100",
+		danger: "bg-red-50 text-red-600 hover:bg-red-100",
+	},
+	border: {
+		default:
+			"border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white",
+		primary:
+			"border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white",
+		secondary:
+			"border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white",
+		success:
+			"border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white",
+		warning:
+			"border-2 border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white",
+		danger: "border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white",
+	},
+	flat: {
+		default: "bg-gray-600 text-white hover:bg-gray-700",
+		primary: "bg-blue-400 text-white hover:bg-blue-500",
+		secondary: "bg-indigo-400 text-white hover:bg-indigo-500",
+		success: "bg-green-400 text-white hover:bg-green-500",
+		warning: "bg-amber-400 text-white hover:bg-amber-500",
+		danger: "bg-red-400 text-white hover:bg-red-500",
 	},
 };
 
@@ -63,38 +84,43 @@ const Button: FC<ButtonProps> = ({
 	isShadow,
 	isIconOnly,
 	isLoading,
+	className,
+	children,
 	...props
 }) => {
-	const sizes = useMemo(
-		() => ({
-			lg: isIconOnly ? "p-3" : "text-lg py-3 px-6",
-			md: isIconOnly ? "p-2" : "py-2 px-4",
-			sm: isIconOnly ? "p-1" : "text-sm py-1 px-2",
-		}),
-		[isIconOnly]
-	);
+	const computedStyles = useMemo(() => {
+		return clsx(
+			baseStyles,
+			isIconOnly ? iconSizeStyles[size] : sizeStyles[size],
+			variantStyles[variant][color],
+			(isRounded || isIconOnly) && "rounded-full",
+			isFullWidth && "w-full",
+			isShadow && "shadow-md",
+			isLoading && "pointer-events-none opacity-70",
+			className
+		);
+	}, [
+		size,
+		color,
+		variant,
+		isRounded,
+		isFullWidth,
+		isShadow,
+		isIconOnly,
+		isLoading,
+		className,
+	]);
 
 	return (
 		<motion.button
 			whileHover={{ scale: 1.05 }}
 			whileTap={{ scale: 0.95, opacity: 0.9 }}
-			className={clsx(
-				"flex items-center justify-center rounded-md gap-3 font-medium",
-				sizes[size],
-				variants.colors[color],
-				variant === "flat"
-					? variants.variants[variant][color]
-					: variants.variants[variant],
-				(isRounded || isIconOnly) && "!rounded-full",
-				isFullWidth && "flex-1 w-full",
-				isShadow && "!shadow-md",
-				props.disabled && "opacity-30 !cursor-not-allowed",
-				props.className
-			)}
+			className={computedStyles}
+			disabled={isLoading || props.disabled}
 			{...props}
 		>
-			{isLoading && <Spinner $color="#FFF" $height={24} $width={24} />}
-			{props.children as React.ReactNode}
+			{isLoading && <Spinner />}
+			{!isLoading && (children as ReactNode)}
 		</motion.button>
 	);
 };
