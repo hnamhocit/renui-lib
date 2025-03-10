@@ -18,6 +18,7 @@ interface TabsProps {
 	data: IData[];
 	color?: Color;
 	classNames?: ActiveTabsClassNames;
+	className?: string;
 }
 
 const variants = {
@@ -31,7 +32,12 @@ const variants = {
 	},
 };
 
-const Tabs: FC<TabsProps> = ({ data, color = "default", classNames }) => {
+const Tabs: FC<TabsProps> = ({
+	data,
+	color = "default",
+	classNames,
+	className,
+}) => {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [x, setX] = useState(0);
 	const [width, setWidth] = useState(0);
@@ -41,6 +47,7 @@ const Tabs: FC<TabsProps> = ({ data, color = "default", classNames }) => {
 			<div className="flex relative items-center overflow-x-scroll scrollbar-hide">
 				{data.map((item, index) => (
 					<ActiveTab
+						key={index}
 						title={item.title}
 						activeIndex={activeIndex}
 						index={index}
@@ -64,7 +71,9 @@ const Tabs: FC<TabsProps> = ({ data, color = "default", classNames }) => {
 				></div>
 			</div>
 
-			<div className="p-2">{data[activeIndex].children}</div>
+			<div className={clsx("p-2", className)}>
+				{data[activeIndex].children}
+			</div>
 		</div>
 	);
 };
