@@ -1,7 +1,7 @@
 {
 	"name": "renui",
 	"type": "module",
-	"version": "0.2.3",
+	"version": "1.0.0",
 	"files": [
 		"dist"
 	],
@@ -28,6 +28,7 @@
 	"dependencies": {
 		"@tailwindcss/vite": "^4.0.12",
 		"@types/node": "^22.13.10",
+		"class-variance-authority": "^0.7.1",
 		"motion": "^12.4.10",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",

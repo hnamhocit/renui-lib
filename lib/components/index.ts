@@ -5,6 +5,7 @@ export { default as Avatar } from "./Avatar";
 export { default as Badge } from "./Badge";
 export * from "./Button";
 export { default as Button } from "./Button";
+export { default as Carousel } from "./Carousel";
 export { default as Checkbox } from "./Checkbox";
 export * from "./Dropdown";
 export { default as Dropdown } from "./Dropdown";

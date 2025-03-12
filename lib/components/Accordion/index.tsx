@@ -2,8 +2,8 @@
 
 import clsx from "clsx";
 import { motion } from "motion/react";
-import { FC, memo, ReactNode, useState } from "react";
-import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+import { FC, memo, ReactNode, useEffect, useRef, useState } from "react";
+import { FaAngleDown } from "react-icons/fa";
 
 interface AccordionClassNames {
 	container?: string;
@@ -24,6 +24,14 @@ const Accordion: FC<AccordionProps> = ({
 	className,
 }) => {
 	const [isOpen, setIsOpen] = useState(false);
+	const [contentHeight, setContentHeight] = useState(0);
+	const contentRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		if (contentRef.current) {
+			setContentHeight(isOpen ? contentRef.current.scrollHeight : 0);
+		}
+	}, [isOpen]);
 
 	const toggleIsOpen = () => setIsOpen((prev) => !prev);
 
@@ -31,29 +39,32 @@ const Accordion: FC<AccordionProps> = ({
 		<div className={classNames?.container}>
 			<motion.button
 				onClick={toggleIsOpen}
-				whileTap={{ scale: 0.95 }}
+				whileTap={{ scale: 0.95, opacity: 0.7 }}
 				className={clsx(
-					"flex items-center gap-3 p-2 transition font-semibold w-full rounded-t-md",
+					"flex items-center gap-3 p-2 font-semibold w-full",
 					classNames?.trigger
 				)}
 			>
 				{label}
 
-				{isOpen ? <FaAngleUp size={20} /> : <FaAngleDown size={20} />}
+				<FaAngleDown
+					size={20}
+					className={clsx("transition-all", isOpen && "rotate-180")}
+				/>
 			</motion.button>
 
-			<div
-				className={clsx(
-					"transition-all scrollbar-hide duration-300 overflow-y-scroll",
-					className,
-					{
-						"max-h-0": !isOpen,
-						"max-h-80": isOpen,
-					}
-				)}
+			<motion.div
+				initial={false}
+				ref={contentRef}
+				transition={{ duration: 0.3 }}
+				animate={{
+					height: contentHeight,
+					opacity: isOpen ? 1 : 0,
+				}}
+				className={clsx("overflow-hidden", className)}
 			>
-				{children}
-			</div>
+				<div className="p-2">{children}</div>
+			</motion.div>
 		</div>
 	);
 };

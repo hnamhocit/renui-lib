@@ -7,10 +7,6 @@
 
 [**RenUI** (React New UI)](https://renui.vercel.app) is a modern, lightweight, and customizable UI component library built for React applications. It provides a collection of reusable, accessible, and stylish components to accelerate your development process while maintaining flexibility and performance.
 
-## Important Note ⚠️⚠️⚠️
-
--   Project current in **beta version**, just preview, document will be added later. Thank you for your trust and download. I also look forward to receiving contributions from you.
-
 ## Features ✨
 
 -   **Modular Components**: Pre-built, reusable UI components like buttons, modals, forms, and more.

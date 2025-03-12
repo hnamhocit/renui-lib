@@ -42,7 +42,7 @@ const Image: FC<ImageProps> = ({
 	return (
 		<div
 			className={clsx(
-				"relative overflow-hidden w-fit rounded-md",
+				"relative overflow-hidden rounded-md",
 				classNames?.container,
 				isRounded && "!rounded-full"
 			)}

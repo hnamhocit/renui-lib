@@ -50,7 +50,7 @@ const Dropdown: FC<DropdownProps> = ({
 
 			<div
 				className={clsx(
-					"absolute min-w-52 p-2 space-y-1 bg-white z-30 max-h-60 overflow-y-scroll scrollbar-hide min-h-40 rounded-2xl shadow-lg transition-all border",
+					"absolute min-w-52 p-2 space-y-1 bg-white z-30 max-h-60 overflow-y-scroll scrollbar-hide min-h-40 rounded-2xl shadow-lg transition-all border border-gray-200",
 					className,
 					{
 						"opacity-100 visible": isOpen,

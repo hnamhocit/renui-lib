@@ -36,6 +36,28 @@ interface InputClassNames {
 	container?: string;
 }
 
+const variants = {
+	variants: {
+		solid: "",
+		bordered: "!bg-transparent border-2",
+		underlined: "!bg-transparent border-b-2 !rounded-none",
+		light: "!bg-transparent",
+	},
+	sizes: {
+		lg: "text-lg py-3 px-6",
+		md: "py-2 px-4",
+		sm: "text-sm py-1 px-2",
+	},
+	colors: {
+		default: "bg-gray-200 border-gray-200 ring-gray-200/50",
+		primary: "bg-blue-600 border-blue-600 ring-blue-600/50",
+		secondary: "bg-indigo-600 border-indigo-600 ring-indigo-600/50",
+		success: "bg-green-600 border-green-600 ring-green-600/50",
+		warning: "bg-amber-600 border-amber-600 ring-amber-600/50",
+		danger: "bg-red-600 border-red-600 ring-red-600/50",
+	},
+};
+
 const Input: FC<InputProps> = ({
 	variant = "solid",
 	size = "md",
@@ -55,28 +77,6 @@ const Input: FC<InputProps> = ({
 
 	const toggleIsVisible = () => setIsVisible((prev) => !prev);
 	const toggleIsFocus = () => setIsFocus((prev) => !prev);
-
-	const variants = {
-		variants: {
-			solid: "",
-			bordered: "!bg-transparent border-2",
-			underlined: "!bg-transparent border-b-2 !rounded-none",
-			light: "!bg-transparent",
-		},
-		sizes: {
-			lg: "text-lg py-3 px-6",
-			md: "py-2 px-4",
-			sm: "text-sm py-1 px-2",
-		},
-		colors: {
-			default: "bg-gray-200 border-gray-200",
-			primary: "bg-blue-600 border-blue-600",
-			secondary: "bg-indigo-600 border-indigo-600",
-			success: "bg-green-600 border-green-600",
-			warning: "bg-amber-600 border-amber-600",
-			danger: "bg-red-600 border-red-600",
-		},
-	};
 
 	return (
 		<div className={classNames?.container}>
@@ -100,7 +100,7 @@ const Input: FC<InputProps> = ({
 					variants.colors[color],
 					isRounded && "!rounded-full",
 					isError && "!bg-red-600 !text-white",
-					isFocus && "ring-2"
+					isFocus && "ring-2 -translate-y-2"
 				)}
 			>
 				{startIcon}
