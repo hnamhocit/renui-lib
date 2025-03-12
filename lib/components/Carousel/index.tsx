@@ -67,7 +67,7 @@ const Carousel: FC<CarouselProps> = ({ images }) => {
 				<FaAngleRight size={24} />
 			</Button>
 
-			<div>
+			<div className="w-full h-full">
 				<AnimatePresence initial={false} custom={direction}>
 					<motion.div
 						key={images[activeIndex]}
@@ -76,7 +76,7 @@ const Carousel: FC<CarouselProps> = ({ images }) => {
 						animate="center"
 						exit="exit"
 						custom={direction}
-						className="absolute flex items-center justify-center"
+						className="absolute flex items-center w-full h-full justify-center"
 					>
 						<Image
 							src={images[activeIndex]}
