@@ -46,7 +46,12 @@ const Tabs: FC<TabsProps> = ({
 
 	return (
 		<div className={classNames?.container}>
-			<div className="flex border rounded-md border-gray-200 relative items-center overflow-x-scroll scrollbar-hide">
+			<div
+				className={clsx(
+					"flex border rounded-md border-gray-200 relative items-center overflow-x-scroll scrollbar-hide",
+					isFullWidth ? "w-full" : "w-fit"
+				)}
+			>
 				{data.map((item, index) => (
 					<ActiveTab
 						key={index}
