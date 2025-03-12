@@ -10,6 +10,7 @@ interface ActiveTabProps {
 	setX: (x: number) => void;
 	setWidth: (width: number) => void;
 	isFullWidth?: boolean;
+	length: number;
 }
 
 const ActiveTab: FC<ActiveTabProps> = ({
@@ -21,6 +22,7 @@ const ActiveTab: FC<ActiveTabProps> = ({
 	setX,
 	setWidth,
 	isFullWidth,
+	length,
 }) => {
 	const isActive = activeIndex === index;
 	const ref = useRef<HTMLButtonElement>(null);
@@ -40,7 +42,9 @@ const ActiveTab: FC<ActiveTabProps> = ({
 		<button
 			ref={ref}
 			className={clsx(
-				"block relative py-1 px-3 text-gray-700 transition-all border-r border-gray-200 hover:scale-105",
+				"block relative py-1 px-3 text-gray-700 transition-all border border-gray-200 hover:scale-105",
+				index === 0 && "rounded-l-md",
+				index === length - 1 && "rounded-r-md",
 				isFullWidth && "flex-1",
 				className,
 				{

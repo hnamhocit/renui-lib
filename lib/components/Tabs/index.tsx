@@ -48,8 +48,7 @@ const Tabs: FC<TabsProps> = ({
 		<div className={classNames?.container}>
 			<div
 				className={clsx(
-					"flex border rounded-md border-gray-200 relative items-center overflow-x-scroll scrollbar-hide",
-					isFullWidth ? "w-full" : "w-fit"
+					"flex rounded-md relative items-center overflow-x-scroll scrollbar-hide"
 				)}
 			>
 				{data.map((item, index) => (
@@ -63,6 +62,7 @@ const Tabs: FC<TabsProps> = ({
 						setX={setX}
 						setWidth={setWidth}
 						isFullWidth={isFullWidth}
+						length={data.length}
 					/>
 				))}
 
