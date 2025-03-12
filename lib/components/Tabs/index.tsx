@@ -19,6 +19,7 @@ interface TabsProps {
 	color?: Color;
 	classNames?: ActiveTabsClassNames;
 	className?: string;
+	isFullWidth?: boolean;
 }
 
 const variants = {
@@ -37,6 +38,7 @@ const Tabs: FC<TabsProps> = ({
 	color = "default",
 	classNames,
 	className,
+	isFullWidth,
 }) => {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [x, setX] = useState(0);
@@ -44,7 +46,7 @@ const Tabs: FC<TabsProps> = ({
 
 	return (
 		<div className={classNames?.container}>
-			<div className="flex relative items-center overflow-x-scroll scrollbar-hide">
+			<div className="flex border rounded-md border-gray-200 relative items-center overflow-x-scroll scrollbar-hide">
 				{data.map((item, index) => (
 					<ActiveTab
 						key={index}
@@ -55,6 +57,7 @@ const Tabs: FC<TabsProps> = ({
 						className={classNames?.tab}
 						setX={setX}
 						setWidth={setWidth}
+						isFullWidth={isFullWidth}
 					/>
 				))}
 
