@@ -28,6 +28,7 @@ interface InputProps
 	startIcon?: ReactNode;
 	endIcon?: ReactNode;
 	classNames?: InputClassNames;
+	isTranslateY?: boolean;
 }
 
 interface InputClassNames {
@@ -69,6 +70,7 @@ const Input: FC<InputProps> = ({
 	startIcon,
 	endIcon,
 	classNames,
+	isTranslateY,
 	...props
 }) => {
 	const [isVisible, setIsVisible] = useState(false);
@@ -83,9 +85,9 @@ const Input: FC<InputProps> = ({
 			<label
 				htmlFor={id}
 				className={clsx(
-					"text-sm text-gray-700 font-medium",
+					"text-sm text-gray-700 dark:text-white font-medium",
 					classNames?.label,
-					isError && "!text-red-600"
+					isError && "!text-red-600",
 				)}
 			>
 				{label}
@@ -100,7 +102,8 @@ const Input: FC<InputProps> = ({
 					variants.colors[color],
 					isRounded && "!rounded-full",
 					isError && "!bg-red-600 !text-white",
-					isFocus && "ring-2 -translate-y-2"
+					isFocus && "ring-2",
+					isTranslateY && isFocus && "-translate-y-2",
 				)}
 			>
 				{startIcon}
@@ -110,7 +113,7 @@ const Input: FC<InputProps> = ({
 					type={isVisible ? "text" : props.type}
 					className={clsx(
 						"flex-1 block outline-none w-full bg-transparent",
-						classNames?.input
+						classNames?.input,
 					)}
 					onFocus={toggleIsFocus}
 					onBlur={toggleIsFocus}

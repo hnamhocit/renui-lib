@@ -1,8 +1,8 @@
 import clsx from "clsx";
-import { FC, memo, useEffect, useRef } from "react";
+import { FC, memo, ReactNode, useEffect, useRef } from "react";
 
 interface ActiveTabProps {
-	title: string;
+	item: { title: string; icon?: ReactNode };
 	activeIndex: number;
 	index: number;
 	className?: string;
@@ -14,7 +14,7 @@ interface ActiveTabProps {
 }
 
 const ActiveTab: FC<ActiveTabProps> = ({
-	title,
+	item: { title, icon },
 	className,
 	activeIndex,
 	setActiveIndex,
@@ -42,17 +42,18 @@ const ActiveTab: FC<ActiveTabProps> = ({
 		<button
 			ref={ref}
 			className={clsx(
-				"block relative py-1 px-3 text-gray-700 transition-all border border-gray-200 hover:scale-105",
+				"flex items-center gap-3 dark:text-white relative py-1 px-3 text-gray-700 transition-all border border-gray-200 hover:scale-105",
 				index === 0 && "rounded-l-md",
 				index === length - 1 && "rounded-r-md",
 				isFullWidth && "flex-1",
 				className,
 				{
 					"font-semibold": isActive,
-				}
+				},
 			)}
 			onClick={() => setActiveIndex(index)}
 		>
+			{icon}
 			{title}
 		</button>
 	);

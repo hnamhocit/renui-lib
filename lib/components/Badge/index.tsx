@@ -3,6 +3,7 @@
 import clsx from "clsx";
 import { FC, memo, ReactNode } from "react";
 
+import Styles from "./Badge.module.css";
 import { Color, Size } from "../../types";
 
 interface BadgeProps {
@@ -52,7 +53,7 @@ const Badge: FC<BadgeProps> = ({
 					variants.sizes[size],
 					variants.colors[color],
 					className,
-					isPing && "animate-ping"
+					isPing && Styles.ping,
 				)}
 			>
 				{content}

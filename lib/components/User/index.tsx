@@ -29,13 +29,15 @@ const User: FC<UserProps> = ({
 }) => {
 	return (
 		<div className={clsx("flex items-center gap-3", classNames?.container)}>
-			<Avatar
-				src={photoURL}
-				alt={name}
-				isRounded
-				isZoom
-				className={clsx("shrink-0", classNames?.avatar)}
-			/>
+			<div className="shrink-0">
+				<Avatar
+					src={photoURL}
+					alt={name}
+					isRounded
+					isZoom
+					className={classNames?.avatar}
+				/>
+			</div>
 
 			<div className="flex-1">
 				<div
@@ -50,7 +52,7 @@ const User: FC<UserProps> = ({
 						target="_blank"
 						className={clsx(
 							"text-xs text-blue-600 underline",
-							classNames?.description
+							classNames?.description,
 						)}
 					>
 						{description}
@@ -59,7 +61,7 @@ const User: FC<UserProps> = ({
 					<div
 						className={clsx(
 							"text-xs text-gray-700",
-							classNames?.description
+							classNames?.description,
 						)}
 					>
 						{description}

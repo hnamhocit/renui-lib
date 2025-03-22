@@ -1,0 +1,12 @@
+@keyframes fadeInPing {
+	from {
+		opacity: 0.5;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.ping {
+	animation: fadeInPing 1s ease-in-out alternate-reverse infinite;
+}

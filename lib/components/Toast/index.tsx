@@ -78,12 +78,13 @@ const Toast: FC<IToast> = ({
 						type === "info"
 							? variants.colors.primary
 							: type === "success"
-							? variants.colors.success
-							: type === "warning"
-							? variants.colors.warning
-							: type === "danger" && variants.colors.danger,
+								? variants.colors.success
+								: type === "warning"
+									? variants.colors.warning
+									: type === "danger" &&
+										variants.colors.danger,
 						isRounded && "!rounded-full",
-						className
+						className,
 					)}
 				>
 					{type && type === "info" ? (
@@ -103,7 +104,7 @@ const Toast: FC<IToast> = ({
 						isRounded
 						size="sm"
 						variant="light"
-						className="!text-white"
+						className="!text-white hover:!bg-red-600"
 						onClick={() => setIsShow(false)}
 					>
 						<FaTimes />

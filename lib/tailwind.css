@@ -1,13 +1,5 @@
 @import "tailwindcss";
-
-@theme {
-	--color-primary: "#2563eb";
-	--color-secondary: "#4f46e5";
-	--color-danger: "#dc2626";
-	--color-warning: "#d97706";
-	--color-success: "#16a34a";
-	--color-default: "#0f172a";
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
 .scrollbar-hide {
 	-ms-overflow-style: none;

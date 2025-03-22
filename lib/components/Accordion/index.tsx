@@ -36,13 +36,13 @@ const Accordion: FC<AccordionProps> = ({
 	const toggleIsOpen = () => setIsOpen((prev) => !prev);
 
 	return (
-		<div className={classNames?.container}>
+		<div className={clsx(classNames?.container, "dark:text-white")}>
 			<motion.button
 				onClick={toggleIsOpen}
 				whileTap={{ scale: 0.95, opacity: 0.7 }}
 				className={clsx(
-					"flex items-center gap-3 p-2 font-semibold w-full",
-					classNames?.trigger
+					"flex items-center gap-3 p-2 font-semibold",
+					classNames?.trigger,
 				)}
 			>
 				{label}

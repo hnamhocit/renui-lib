@@ -53,6 +53,10 @@ const meta: Meta<typeof Input> = {
 			control: "text",
 			description: "The icon to display at the end of the input",
 		},
+		isTranslateY: {
+			control: "boolean",
+			description: "Whether the input is fixed",
+		},
 	},
 };
 

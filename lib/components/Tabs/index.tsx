@@ -6,6 +6,7 @@ import ActiveTab from "./ActiveTab";
 
 interface IData {
 	title: string;
+	icon?: ReactNode;
 	children: ReactNode;
 }
 
@@ -48,13 +49,13 @@ const Tabs: FC<TabsProps> = ({
 		<div className={classNames?.container}>
 			<div
 				className={clsx(
-					"flex rounded-md relative items-center overflow-x-scroll scrollbar-hide"
+					"flex rounded-md relative items-center overflow-x-scroll scrollbar-hide",
 				)}
 			>
 				{data.map((item, index) => (
 					<ActiveTab
 						key={index}
-						title={item.title}
+						item={{ title: item.title, icon: item.icon }}
 						activeIndex={activeIndex}
 						index={index}
 						setActiveIndex={setActiveIndex}
@@ -73,7 +74,7 @@ const Tabs: FC<TabsProps> = ({
 						{
 							"rounded-l-md": activeIndex === 0,
 							"rounded-r-md": activeIndex === data.length - 1,
-						}
+						},
 					)}
 					style={{ width: `${width}px`, left: `${x}px` }}
 				></div>

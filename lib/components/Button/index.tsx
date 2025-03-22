@@ -48,7 +48,7 @@ const variantStyles: Record<ButtonVariant, Record<Color, string>> = {
 		danger: "bg-red-600 text-white hover:bg-red-700 shadow-red-600/50",
 	},
 	light: {
-		default: "text-gray-900 hover:bg-gray-200",
+		default: "text-gray-900 hover:bg-gray-200 dark:text-white",
 		primary: "text-blue-600 hover:bg-blue-100",
 		secondary: "text-indigo-600 hover:bg-indigo-100",
 		success: "text-green-600 hover:bg-green-100",
@@ -57,7 +57,7 @@ const variantStyles: Record<ButtonVariant, Record<Color, string>> = {
 	},
 	border: {
 		default:
-			"border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white shadow-gray-900/50",
+			"dark:text-white border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white shadow-gray-900/50",
 		primary:
 			"border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white shadow-blue-600/50",
 		secondary:
@@ -103,7 +103,7 @@ const Button: FC<ButtonProps> = ({
 			isFullWidth && "w-full",
 			isShadow && "shadow-md",
 			(isLoading || props.disabled) && "pointer-events-none opacity-70",
-			className
+			className,
 		);
 	}, [
 		size,

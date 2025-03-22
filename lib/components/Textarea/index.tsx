@@ -16,6 +16,7 @@ interface TextareaProps {
 	errorMessage?: string;
 	classNames?: TextareaClassNames;
 	color?: Color;
+	isTranslateY?: boolean;
 }
 
 interface TextareaClassNames {
@@ -45,6 +46,7 @@ const Textarea: FC<TextareaProps> = ({
 	errorMessage,
 	classNames,
 	color = "default",
+	isTranslateY,
 }) => {
 	const textbox = useRef<HTMLTextAreaElement>(null);
 
@@ -69,9 +71,9 @@ const Textarea: FC<TextareaProps> = ({
 			<label
 				htmlFor={id}
 				className={clsx(
-					"text-sm text-gray-700 font-medium",
+					"text-sm text-gray-700 dark:text-white font-medium",
 					classNames?.label,
-					isError && "!text-red-600"
+					isError && "!text-red-600",
 				)}
 			>
 				{label}
@@ -85,11 +87,12 @@ const Textarea: FC<TextareaProps> = ({
 				value={value}
 				onChange={handleKeyDown}
 				className={clsx(
-					"outline-none resize-none rounded-md bg-gray-100 p-2 w-full focus:ring-2 focus:-translate-y-2 transition-all",
+					"outline-none resize-none rounded-md bg-gray-100 p-2 w-full focus:ring-2 transition-all",
 					variants.colors[color],
 					rounded && "!rounded-2xl",
 					isError && "!bg-red-600 text-white",
-					className
+					isTranslateY && "focus:-translate-y-2",
+					className,
 				)}
 				placeholder={placeholder}
 			/>

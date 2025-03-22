@@ -29,3 +29,4 @@ export { default as ToastContainer } from "./Toast/ToastContainer";
 export * from "./Tooltip";
 export { default as Tooltip } from "./Tooltip";
 export { default as User } from "./User";
+export { default as Pagination } from "./Pagination";
