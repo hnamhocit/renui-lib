@@ -71,7 +71,7 @@ const Toast: FC<IToast> = ({
 					animate={{ opacity: 1, y: 0 }}
 					exit={{ opacity: 0, y: 20 }}
 					className={clsx(
-						"absolute border rounded-md !text-white shadow-md min-w-24 z-[9999] flex items-center gap-3",
+						"fixed border rounded-md !text-white shadow-md min-w-24 z-[9999] flex items-center gap-3",
 						variants.sizes[size],
 						!type && variants.colors[color],
 						variants.positions[position],

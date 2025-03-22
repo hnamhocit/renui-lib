@@ -41,7 +41,10 @@ const User: FC<UserProps> = ({
 
 			<div className="flex-1">
 				<div
-					className={clsx("text-sm font-semibold", classNames?.name)}
+					className={clsx(
+						"text-sm font-semibold dark:text-white transition",
+						classNames?.name,
+					)}
 				>
 					{name}
 				</div>
@@ -60,7 +63,7 @@ const User: FC<UserProps> = ({
 				) : (
 					<div
 						className={clsx(
-							"text-xs text-gray-700",
+							"text-xs text-gray-700 dark:text-gray-200 transition",
 							classNames?.description,
 						)}
 					>

@@ -12,7 +12,7 @@ interface LinkProps extends Omit<HTMLMotionProps<"a">, "ref"> {
 const variants = {
 	colors: {
 		default:
-			"text-gray-900 decoration-gray-900 hover:text-gray-950 hover:decoration-gray-950",
+			"dark:text-white text-gray-900 decoration-gray-900 hover:text-gray-950 hover:decoration-gray-950",
 		primary:
 			"text-blue-600 decoration-blue-600 hover:text-blue-700 hover:decoration-blue-700",
 		secondary:
@@ -40,7 +40,7 @@ const Link: FC<LinkProps> = ({
 				"hover:underline inline-block transition-colors",
 				props.className,
 				isUnderline && "underline underline-offset-2",
-				variants.colors[color]
+				variants.colors[color],
 			)}
 		>
 			{children}
