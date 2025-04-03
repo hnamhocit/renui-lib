@@ -6,8 +6,9 @@ import { FC, memo, ReactNode, useMemo } from "react";
 
 import { Color, Size } from "../../types";
 import Spinner from "../Spinner";
+import Ripple from "../Ripple";
 
-export type ButtonVariant = "solid" | "light" | "border" | "flat";
+type ButtonVariant = "solid" | "light" | "border" | "flat";
 
 interface ButtonProps extends Omit<HTMLMotionProps<"button">, "ref"> {
 	size?: Size;
@@ -96,6 +97,7 @@ const Button: FC<ButtonProps> = ({
 }) => {
 	const computedStyles = useMemo(() => {
 		return clsx(
+			"relative overflow-hidden",
 			baseStyles,
 			isIconOnly ? iconSizeStyles[size] : sizeStyles[size],
 			variantStyles[variant][color],
@@ -120,7 +122,6 @@ const Button: FC<ButtonProps> = ({
 
 	return (
 		<motion.button
-			whileHover={{ scale: 1.05 }}
 			whileTap={{ scale: 0.95, opacity: 0.9 }}
 			className={computedStyles}
 			disabled={props.disabled}
@@ -128,6 +129,9 @@ const Button: FC<ButtonProps> = ({
 		>
 			{isLoading && <Spinner $color="#FFF" $width={20} $height={20} />}
 			{!isLoading && (children as ReactNode)}
+			<div className="text-black/50" />
+			<div className="text-blue-600/50"></div>
+			<Ripple />
 		</motion.button>
 	);
 };

@@ -1,7 +1,7 @@
 export type Color =
-	| 'default'
-	| 'primary'
-	| 'secondary'
-	| 'success'
-	| 'warning'
-	| 'danger'
+	| "default"
+	| "primary"
+	| "secondary"
+	| "success"
+	| "warning"
+	| "danger";

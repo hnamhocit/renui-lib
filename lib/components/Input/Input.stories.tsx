@@ -131,7 +131,7 @@ export const Underlined: Story = {
 	args: {
 		label: "Underlined Input",
 		placeholder: "Enter text...",
-		variant: "underlined",
+		variant: "underline",
 		size: "md",
 		color: "default",
 	},
@@ -142,7 +142,7 @@ export const Bordered: Story = {
 	args: {
 		label: "Bordered Input",
 		placeholder: "Enter text...",
-		variant: "bordered",
+		variant: "border",
 		size: "md",
 		color: "default",
 	},

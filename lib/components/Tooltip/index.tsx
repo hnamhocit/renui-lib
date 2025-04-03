@@ -21,7 +21,7 @@ interface TooltipClassNames {
 	container?: string;
 }
 
-export type TooltipVariant = "solid" | "border" | "flat";
+type TooltipVariant = "solid" | "border" | "flat";
 
 const variants = {
 	sizes: {
@@ -95,7 +95,7 @@ const Tooltip: FC<TooltipProps> = ({
 					{
 						"opacity-0 scale-0 invisible": !isHover,
 						"opacity-100 scale-100 visible": isHover,
-					}
+					},
 				)}
 			>
 				{content}

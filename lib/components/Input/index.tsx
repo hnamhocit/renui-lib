@@ -14,7 +14,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Color, Size } from "../../types";
 import Button from "../Button";
 
-export type InputVariant = "solid" | "bordered" | "light" | "underlined";
+type InputVariant = "solid" | "border" | "light" | "underline";
 
 interface InputProps
 	extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
@@ -40,8 +40,8 @@ interface InputClassNames {
 const variants = {
 	variants: {
 		solid: "",
-		bordered: "!bg-transparent border-2",
-		underlined: "!bg-transparent border-b-2 !rounded-none",
+		border: "!bg-transparent border-2",
+		underline: "!bg-transparent border-b-2 !rounded-none",
 		light: "!bg-transparent",
 	},
 	sizes: {
