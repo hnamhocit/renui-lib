@@ -29,7 +29,7 @@ const Modal: FC<ModalProps> = ({
 			className={clsx(
 				"fixed inset-0 z-[9999] shadow-2xl transition-all duration-500",
 				classNames?.container,
-				isOpen ? "visible" : "invisible"
+				isOpen ? "visible" : "invisible",
 			)}
 		>
 			<AnimatePresence>
@@ -47,8 +47,8 @@ const Modal: FC<ModalProps> = ({
 							animate={{ opacity: 1, translateY: 0 }}
 							exit={{ translateY: 32, opacity: 0 }}
 							className={clsx(
-								"absolute inset-x-0 bottom-0 sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-t-xl sm:rounded-2xl min-w-80 min-h-120 max-h-160 overflow-y-scroll scrollbar-hide",
-								className
+								"absolute inset-x-0 bottom-0 sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-t-xl sm:rounded-2xl w-full max-w-md overflow-y-scroll scrollbar-hide",
+								className,
 							)}
 							onClick={(e) => e.stopPropagation()}
 						>
